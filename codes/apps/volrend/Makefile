@@ -1,5 +1,10 @@
+
+# this Makefile expects TOOLCHAIN_PREFIX and TOOLCHAIN to be set for a cross-compiler
+
 TARGET = VOLREND
-OBJS = adaptive.o file.o main.o map.o normal.o octree.o opacity.o option.o raytrace.o render.o view.o libtiff/libtiff.a
+LIBTIFF_DIR = libtiff-4.3.0
+LIBTIFF = $(LIBTIFF_DIR)/libtiff.a
+OBJS = $(LIBTIFF) adaptive.o file.o main.o map.o normal.o octree.o opacity.o option.o raytrace.o render.o view.o
 
 include ../../Makefile.config
 
@@ -20,10 +25,18 @@ raytrace.c: raytrace.c.in incl.h address.h
 
 incl.h:	user_options.h const.h my_types.h global.h macros.h address.h
 
-libtiff/libtiff.a:
-	make -C libtiff
+TOOLCHAIN_PATH = $(dir $(TOOLCHAIN_PREFIX))
+ifdef TOOLCHAIN_PREFIX
+	NEWPATH=$(TOOLCHAIN_PATH):$$PATH
+endif
+
+$(LIBTIFF):
+	export PATH=$(NEWPATH)
+	ln -s $(LIBTIFF_DIR) libtiff
+	cd $(LIBTIFF_DIR) && ./configure --disable-shared --host=$(TOOLCHAIN) prefix="${PWD}" exec_prefix="${PWD}" \
+		&& make prefix="${PWD}" exec_prefix="${PWD}" && make install prefix="${PWD}" exec_prefix="${PWD}"
 
 clean:
-	$(MAKE) -C libtiff clean
+	$(MAKE) -C $(LIBTIFF_DIR) clean
 	$(RM) $(OBJS) VOLREND
 
