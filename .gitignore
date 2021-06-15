@@ -28,3 +28,5 @@ codes/apps/raytrace/inputs/car.rl
 
 codes/apps/volrend/libtiff/libtiff.a
 codes/apps/volrend/libtiff/mkg3states
+
+*.riscv
