@@ -29,10 +29,13 @@ endif
 INSTALL_DIR ?= $(abspath ./bin)
 INSTALL_INPUTS_DIR = $(INSTALL_DIR)/inputs
 
-.PHONY: all clean install clean_install clean_all
-.DEFAULT: all
+.PHONY: help build clean install clean_install clean_all
+.DEFAULT: help
 
-all:
+help:
+	echo "see the Makefile for available targets"
+
+build:
 	$(MAKE) -C codes TOOLCHAIN_PREFIX=$(TOOLCHAIN_PREFIX) EXT=$(EXT)
 
 install_inputs: | $(INSTALL_INPUTS_DIR)
