@@ -18,17 +18,17 @@
 iters=${1:-1}
 
 tests=(\
-  "splash3/riscv/BARNES.riscv < splash3/inputs/barnes/inputs/parsec_native"
-  "splash3/riscv/FMM.riscv < splash3/inputs/fmm/inputs/parsec_native"
-  "splash3/riscv/OCEAN.riscv -p8 -n258"
-  "splash3/riscv/RADIOSITY -p 8 -ae 5000 -bf 0.1 -en 0.05 -room -batch"
-  "splash3/riscv/RAYTRACE -p8 -m64 inputs/car.env"
-  "splash3/riscv/WATER-NSQUARED < splash3/inputs/water-nsquared/inputs/parsec_native"
-  "splash3/riscv/WATER-SPATIAL < splash3/inputs/water-spatial/inputs/parsec_native"
-  "splash3/riscv/CHOLESKY.riscv -p8 < splash3/inputs/cholesky/inputs/tk15.O"
-  "splash3/riscv/FFT.riscv -p8 -m16"
-  "splash3/riscv/LU.riscv -p8 -n512"
-  "splash3/riscv/RADIX.riscv -p8 -n1048576"
+  "./bin/riscv/BARNES.riscv < ./bin/inputs/barnes/inputs/parsec_native"
+  "./bin/riscv/FMM.riscv < ./bin/inputs/fmm/inputs/parsec_native"
+  "./bin/riscv/OCEAN.riscv -p8 -n258"
+  "./bin/riscv/RADIOSITY -p 8 -ae 5000 -bf 0.1 -en 0.05 -room -batch"
+  "./bin/riscv/RAYTRACE -p8 -m64 ./bin/inputs/raytrace/inputs/car.env"
+  "./bin/riscv/WATER-NSQUARED < ./bin/inputs/water-nsquared/inputs/parsec_native"
+  "./bin/riscv/WATER-SPATIAL < ./bin/inputs/water-spatial/inputs/parsec_native"
+  "./bin/riscv/CHOLESKY.riscv -p8 < ./bin/inputs/cholesky/inputs/tk15.O"
+  "./bin/riscv/FFT.riscv -p8 -m16"
+  "./bin/riscv/LU.riscv -p8 -n512"
+  "./bin/riscv/RADIX.riscv -p8 -n1048576"
 )
 
 echo "running tests"
