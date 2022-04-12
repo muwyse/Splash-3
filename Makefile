@@ -18,6 +18,11 @@
 #
 # To clean everything:
 # make clean_all
+#
+# To copy files to BP Linux build:
+# find bin/inputs -type f -exec sed -i 's/NUMPROCS/#/g' {} \;
+# cp -R bin/* sdk/linux/work/sysroot/splash3/
+# cp splash3.sh sdk/linux/work/sysroot/
 
 EXT ?= riscv
 ifeq ($(EXT),x86)
@@ -39,8 +44,10 @@ build:
 	$(MAKE) -C codes TOOLCHAIN_PREFIX=$(TOOLCHAIN_PREFIX) EXT=$(EXT)
 
 install_inputs: | $(INSTALL_INPUTS_DIR)
-	cd codes/apps; find . -type d -name "inputs" -exec cp -R --parents {} $(INSTALL_INPUTS_DIR)/ \;
-	cd codes/kernels; find . -type d -name "inputs" -exec cp -R --parents {} $(INSTALL_INPUTS_DIR)/ \;
+	cd codes/apps; find . -type f -name "parsec_native" -exec cp -R --parents {} $(INSTALL_INPUTS_DIR)/ \;
+	cd codes/apps; cp --parents raytrace/inputs/car.* $(INSTALL_INPUTS_DIR)
+	cd codes/kernels; find . -type f -name "parsec_native" -exec cp -R --parents {} $(INSTALL_INPUTS_DIR)/ \;
+	cd codes/kernels; cp --parents cholesky/inputs/tk15.O $(INSTALL_INPUTS_DIR)
 
 install_bin: | $(INSTALL_DIR)/$(EXT)
 	find codes -name "*.$(EXT)" -exec cp {} $(INSTALL_DIR)/$(EXT)/ \;

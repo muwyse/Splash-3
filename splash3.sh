@@ -18,17 +18,17 @@
 iters=${1:-1}
 
 tests=(\
-  "splash3/BARNES.riscv < splash3/inputs/barnes/inputs/parsec_native"
-  "splash3/FMM.riscv < splash3/inputs/fmm/inputs/parsec_native"
-  "splash3/OCEAN.riscv -p8 -n258"
-  "splash3/RADIOSITY -p 8 -ae 5000 -bf 0.1 -en 0.05 -room -batch"
-  "splash3/RAYTRACE -p8 -m64 inputs/car.env"
-  "splash3/WATER-NSQUARED < splash3/inputs/water-nsquared/inputs/parsec_native"
-  "splash3/WATER-SPATIAL < splash3/inputs/water-spatial/inputs/parsec_native"
-  "splash3/CHOLESKY.riscv -p8 < splash3/inputs/cholesky/inputs/tk15.O"
-  "splash3/FFT.riscv -p8 -m16"
-  "splash3/LU.riscv -p8 -n512"
-  "splash3/RADIX.riscv -p8 -n1048576"
+  "splash3/riscv/BARNES.riscv < splash3/inputs/barnes/inputs/parsec_native"
+  "splash3/riscv/FMM.riscv < splash3/inputs/fmm/inputs/parsec_native"
+  "splash3/riscv/OCEAN.riscv -p8 -n258"
+  "splash3/riscv/RADIOSITY -p 8 -ae 5000 -bf 0.1 -en 0.05 -room -batch"
+  "splash3/riscv/RAYTRACE -p8 -m64 inputs/car.env"
+  "splash3/riscv/WATER-NSQUARED < splash3/inputs/water-nsquared/inputs/parsec_native"
+  "splash3/riscv/WATER-SPATIAL < splash3/inputs/water-spatial/inputs/parsec_native"
+  "splash3/riscv/CHOLESKY.riscv -p8 < splash3/inputs/cholesky/inputs/tk15.O"
+  "splash3/riscv/FFT.riscv -p8 -m16"
+  "splash3/riscv/LU.riscv -p8 -n512"
+  "splash3/riscv/RADIX.riscv -p8 -n1048576"
 )
 
 echo "running tests"
@@ -42,4 +42,4 @@ do
 done
 
 # tests done, power down
-poweroff
+#poweroff
