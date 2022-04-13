@@ -31,8 +31,9 @@ else
 TOOLCHAIN_PREFIX=riscv64-unknown-linux-gnu-
 endif
 
-INSTALL_DIR ?= $(abspath ./bin)
-INSTALL_INPUTS_DIR = $(INSTALL_DIR)/inputs
+INSTALL_DIR ?= $(abspath ./root)
+INSTALL_BIN_DIR := $(INSTALL_DIR)/bin/$(EXT)
+INSTALL_INPUTS_DIR := $(INSTALL_DIR)/inputs
 
 .PHONY: help build clean install clean_install clean_all
 .DEFAULT: help
@@ -49,13 +50,17 @@ install_inputs: | $(INSTALL_INPUTS_DIR)
 	cd codes/kernels; find . -type f -name "parsec_native" -exec cp -R --parents {} $(INSTALL_INPUTS_DIR)/ \;
 	cd codes/kernels; cp --parents cholesky/inputs/tk15.O $(INSTALL_INPUTS_DIR)
 
-install_bin: | $(INSTALL_DIR)/$(EXT)
-	find codes -name "*.$(EXT)" -exec cp {} $(INSTALL_DIR)/$(EXT)/ \;
+install_bin: | $(INSTALL_BIN_DIR)
+	find codes -name "*.$(EXT)" -exec cp {} $(INSTALL_BIN_DIR)/ \;
 
-install: install_bin install_inputs
+install: install_bin install_inputs | $(INSTALL_DIR)
+	cp ./splash3.sh $(INSTALL_DIR)/
 
-$(INSTALL_DIR)/$(EXT):
-	mkdir -p $(INSTALL_DIR)/$(EXT)
+$(INSTALL_DIR):
+	mkdir -p $(INSTALL_DIR)
+
+$(INSTALL_BIN_DIR):
+	mkdir -p $(INSTALL_BIN_DIR)
 
 $(INSTALL_INPUTS_DIR):
 	mkdir -p $(INSTALL_INPUTS_DIR)
@@ -73,4 +78,4 @@ clean_inputs:
 	rm -rf $(INSTALL_INPUTS_DIR)
 
 clean_install.%:
-	rm -rf $(INSTALL_DIR)/$*
+	rm -rf $(INSTALL_BIN_DIR)
