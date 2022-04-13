@@ -35,6 +35,8 @@ INSTALL_DIR ?= $(abspath ./root)
 INSTALL_BIN_DIR := $(INSTALL_DIR)/bin/$(EXT)
 INSTALL_INPUTS_DIR := $(INSTALL_DIR)/inputs
 
+NUMPROCS ?= 8
+
 .PHONY: help build clean install clean_install clean_all
 .DEFAULT: help
 
@@ -49,6 +51,9 @@ install_inputs: | $(INSTALL_INPUTS_DIR)
 	cd codes/apps; cp --parents raytrace/inputs/car.* $(INSTALL_INPUTS_DIR)
 	cd codes/kernels; find . -type f -name "parsec_native" -exec cp -R --parents {} $(INSTALL_INPUTS_DIR)/ \;
 	cd codes/kernels; cp --parents cholesky/inputs/tk15.O $(INSTALL_INPUTS_DIR)
+	cd codes/kernels; cp --parents cholesky/inputs/tk17.O $(INSTALL_INPUTS_DIR)
+	cd codes/kernels; cp --parents cholesky/inputs/tk29.O $(INSTALL_INPUTS_DIR)
+	find $(INSTALL_INPUTS_DIR) -type f -exec sed -i 's/NUMPROCS/$(NUMPROCS)/g' {} \;
 
 install_bin: | $(INSTALL_BIN_DIR)
 	find codes -name "*.$(EXT)" -exec cp {} $(INSTALL_BIN_DIR)/ \;
