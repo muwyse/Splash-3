@@ -60,9 +60,10 @@ install_run: | $(INSTALL_DIR)
 NUMPROCS ?= 8
 install_inputs: | $(INSTALL_INPUTS_DIR)
 	cd codes/apps; find . -type f -name "parsec_native" -exec cp -R --parents {} $(INSTALL_INPUTS_DIR)/ \;
+	cd codes/apps; find . -type f -name "parsec_simlarge" -exec cp -R --parents {} $(INSTALL_INPUTS_DIR)/ \;
+	cd codes/apps; find . -type f -name "parsec_test" -exec cp -R --parents {} $(INSTALL_INPUTS_DIR)/ \;
 	cd codes/apps; cp raytrace/inputs/car.* $(INSTALL_INPUTS_DIR)
-	cd codes/kernels; find . -type f -name "parsec_native" -exec cp -R --parents {} $(INSTALL_INPUTS_DIR)/ \;
-	cd codes/kernels; cp --parents cholesky/inputs/tk15.O $(INSTALL_INPUTS_DIR)
+	cd codes/apps; cp water-nsquared/random.in $(INSTALL_DIR)/
 	cd codes/kernels; cp --parents cholesky/inputs/tk17.O $(INSTALL_INPUTS_DIR)
 	cd codes/kernels; cp --parents cholesky/inputs/tk29.O $(INSTALL_INPUTS_DIR)
 	find $(INSTALL_INPUTS_DIR) -type f -exec sed -i 's/NUMPROCS/$(NUMPROCS)/g' {} \;
