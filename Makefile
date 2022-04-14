@@ -91,3 +91,9 @@ clean_inputs:
 clean_install:
 	rm -rf $(INSTALL_DIR)
 
+# package for linux rootfs build
+# this simply copies the install directory contents into some other directory
+ROOTFS ?= ./root/bin
+rootfs:
+	mkdir -p $(ROOTFS)
+	cp -R $(INSTALL_DIR)/* $(ROOTFS)
