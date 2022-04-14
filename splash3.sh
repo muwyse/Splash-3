@@ -33,9 +33,10 @@ time ./CHOLESKY.riscv -p8 -C32768 -t < ./inputs/cholesky/inputs/tk17.O
 time ./CHOLESKY.riscv -p8 -C32768 -t < ./inputs/cholesky/inputs/tk17.O
 
 # apps
-time ./RADIOSITY.riscv -p 8 -ae 2000 -bf 0.015 -en 0.005 -largeroom -batch
-time ./RADIOSITY.riscv -p 8 -ae 2000 -bf 0.015 -en 0.005 -largeroom -batch
-time ./RADIOSITY.riscv -p 8 -ae 2000 -bf 0.015 -en 0.005 -largeroom -batch
+# has problems on ucode config
+#time ./RADIOSITY.riscv -p 8 -ae 2000 -bf 0.015 -en 0.005 -largeroom -batch
+#time ./RADIOSITY.riscv -p 8 -ae 2000 -bf 0.015 -en 0.005 -largeroom -batch
+#time ./RADIOSITY.riscv -p 8 -ae 2000 -bf 0.015 -en 0.005 -largeroom -batch
 
 time ./RAYTRACE.riscv -p8 -m64 ./inputs/car.env
 time ./RAYTRACE.riscv -p8 -m64 ./inputs/car.env
