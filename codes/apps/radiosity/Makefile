@@ -17,6 +17,7 @@ LOADLIBES = glibdumb/glib.a glibps/glibps.a
 
 $(TARGET): $(OBJS) $(LOADLIBES)
 	$(CC) $(OBJS) $(CFLAGS) $(LOADLIBES) -o $(TARGET) $(LDFLAGS)
+	cp $(TARGET) $(TARGET).$(EXT)
 
 radiosity.h: patch.h model.h parallel.h task.h
 rad_main.c: rad_main.c.in $(HS)

@@ -16,19 +16,19 @@
 #./RADIX -p# -n1048576
 
 # kernels
-time ./bin/riscv/FFT.riscv -p8 -l6 -m22 -t
-time ./bin/riscv/LU.riscv -p8 -n1024 -t
-time ./bin/riscv/RADIX.riscv -p8 -n20000000 -t
-time ./bin/riscv/CHOLESKY.riscv -p8 -C 32768 -t < ./inputs/cholesky/inputs/tk17.O
+time ./FFT.riscv -p8 -l6 -m22 -t
+time ./LU.riscv -p8 -n1024 -t
+time ./RADIX.riscv -p8 -n20000000 -t
+time ./CHOLESKY.riscv -p8 -C32768 -t < ./inputs/cholesky/inputs/tk17.O
 
 # apps
-time ./bin/riscv/BARNES.riscv < ./inputs/barnes/inputs/parsec_native
-time ./bin/riscv/FMM.riscv < ./inputs/fmm/inputs/parsec_native
-time ./bin/riscv/OCEAN.riscv -p8 -n258
-time ./bin/riscv/RADIOSITY -p 8 -ae 5000 -bf 0.1 -en 0.05 -room -batch
-time ./bin/riscv/RAYTRACE -p8 -m64 ./inputs/raytrace/inputs/car.env
-time ./bin/riscv/WATER-NSQUARED < ./inputs/water-nsquared/inputs/parsec_native
-time ./bin/riscv/WATER-SPATIAL < ./inputs/water-spatial/inputs/parsec_native
+time ./BARNES.riscv < ./inputs/barnes/inputs/parsec_native
+time ./FMM.riscv < ./inputs/fmm/inputs/parsec_native
+time ./OCEAN.riscv -p8 -n258
+time ./RADIOSITY -p 8 -ae 5000 -bf 0.1 -en 0.05 -room -batch
+time ./RAYTRACE -p8 -m64 ./inputs/car.env
+time ./WATER-NSQUARED < ./inputs/water-nsquared/inputs/parsec_native
+time ./WATER-SPATIAL < ./inputs/water-spatial/inputs/parsec_native
 
 # tests done, power down
 #poweroff

@@ -30,6 +30,7 @@ codes/apps/volrend/libtiff/libtiff.a
 codes/apps/volrend/libtiff/mkg3states
 
 root/
+install/
 bin/
 *.riscv
 *.x86
