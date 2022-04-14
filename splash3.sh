@@ -17,21 +17,45 @@
 
 # kernels
 time ./FFT.riscv -p8 -l6 -m22 -t
+time ./FFT.riscv -p8 -l6 -m22 -t
+time ./FFT.riscv -p8 -l6 -m22 -t
+
 time ./LU.riscv -p8 -n1024 -t
+time ./LU.riscv -p8 -n1024 -t
+time ./LU.riscv -p8 -n1024 -t
+
 time ./RADIX.riscv -p8 -n20000000 -t
+time ./RADIX.riscv -p8 -n20000000 -t
+time ./RADIX.riscv -p8 -n20000000 -t
+
+time ./CHOLESKY.riscv -p8 -C32768 -t < ./inputs/cholesky/inputs/tk17.O
+time ./CHOLESKY.riscv -p8 -C32768 -t < ./inputs/cholesky/inputs/tk17.O
 time ./CHOLESKY.riscv -p8 -C32768 -t < ./inputs/cholesky/inputs/tk17.O
 
 # apps
 time ./RADIOSITY -p 8 -ae 2000 -bf 0.015 -en 0.005 -largeroom -batch
+time ./RADIOSITY -p 8 -ae 2000 -bf 0.015 -en 0.005 -largeroom -batch
+time ./RADIOSITY -p 8 -ae 2000 -bf 0.015 -en 0.005 -largeroom -batch
+
 time ./RAYTRACE -p8 -m64 ./inputs/car.env
-time ./WATER-NSQUARED < ./inputs/water-nsquared/inputs/parsec_test
-time ./WATER-SPATIAL < ./inputs/water-spatial/inputs/parsec_test
-time ./FMM.riscv < ./inputs/fmm/inputs/parsec_test
+time ./RAYTRACE -p8 -m64 ./inputs/car.env
+time ./RAYTRACE -p8 -m64 ./inputs/car.env
+
+time ./WATER-NSQUARED < ./inputs/water-nsquared/inputs/parsec_simlarge
+time ./WATER-NSQUARED < ./inputs/water-nsquared/inputs/parsec_simlarge
+time ./WATER-NSQUARED < ./inputs/water-nsquared/inputs/parsec_simlarge
+
+time ./WATER-SPATIAL < ./inputs/water-spatial/inputs/parsec_simlarge
+time ./WATER-SPATIAL < ./inputs/water-spatial/inputs/parsec_simlarge
+time ./WATER-SPATIAL < ./inputs/water-spatial/inputs/parsec_simlarge
+
+#hangs on fpga
+#time ./FMM.riscv < ./inputs/fmm/inputs/parsec_test
 
 # pthread_mutex_lock assertion failed
-#time ./BARNES.riscv < ./inputs/barnes/inputs/parsec_native
+#time ./BARNES.riscv < ./inputs/barnes/inputs/parsec_simlarge
 # segfault
 #time ./OCEAN.riscv -p8 -n258
 
 # tests done, power down
-#poweroff
+poweroff
