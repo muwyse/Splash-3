@@ -33,21 +33,21 @@ time ./CHOLESKY.riscv -p8 -C32768 -t < ./inputs/cholesky/inputs/tk17.O
 time ./CHOLESKY.riscv -p8 -C32768 -t < ./inputs/cholesky/inputs/tk17.O
 
 # apps
-time ./RADIOSITY -p 8 -ae 2000 -bf 0.015 -en 0.005 -largeroom -batch
-time ./RADIOSITY -p 8 -ae 2000 -bf 0.015 -en 0.005 -largeroom -batch
-time ./RADIOSITY -p 8 -ae 2000 -bf 0.015 -en 0.005 -largeroom -batch
+time ./RADIOSITY.riscv -p 8 -ae 2000 -bf 0.015 -en 0.005 -largeroom -batch
+time ./RADIOSITY.riscv -p 8 -ae 2000 -bf 0.015 -en 0.005 -largeroom -batch
+time ./RADIOSITY.riscv -p 8 -ae 2000 -bf 0.015 -en 0.005 -largeroom -batch
 
-time ./RAYTRACE -p8 -m64 ./inputs/car.env
-time ./RAYTRACE -p8 -m64 ./inputs/car.env
-time ./RAYTRACE -p8 -m64 ./inputs/car.env
+time ./RAYTRACE.riscv -p8 -m64 ./inputs/car.env
+time ./RAYTRACE.riscv -p8 -m64 ./inputs/car.env
+time ./RAYTRACE.riscv -p8 -m64 ./inputs/car.env
 
-time ./WATER-NSQUARED < ./inputs/water-nsquared/inputs/parsec_simlarge
-time ./WATER-NSQUARED < ./inputs/water-nsquared/inputs/parsec_simlarge
-time ./WATER-NSQUARED < ./inputs/water-nsquared/inputs/parsec_simlarge
+time ./WATER-NSQUARED.riscv < ./inputs/water-nsquared/inputs/parsec_simlarge
+time ./WATER-NSQUARED.riscv < ./inputs/water-nsquared/inputs/parsec_simlarge
+time ./WATER-NSQUARED.riscv < ./inputs/water-nsquared/inputs/parsec_simlarge
 
-time ./WATER-SPATIAL < ./inputs/water-spatial/inputs/parsec_simlarge
-time ./WATER-SPATIAL < ./inputs/water-spatial/inputs/parsec_simlarge
-time ./WATER-SPATIAL < ./inputs/water-spatial/inputs/parsec_simlarge
+time ./WATER-SPATIAL.riscv < ./inputs/water-spatial/inputs/parsec_simlarge
+time ./WATER-SPATIAL.riscv < ./inputs/water-spatial/inputs/parsec_simlarge
+time ./WATER-SPATIAL.riscv < ./inputs/water-spatial/inputs/parsec_simlarge
 
 #hangs on fpga
 #time ./FMM.riscv < ./inputs/fmm/inputs/parsec_test
