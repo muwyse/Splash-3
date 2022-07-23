@@ -3,16 +3,16 @@
 all:
 	$(MAKE) -C apps/barnes
 	$(MAKE) -C apps/fmm
-	#$(MAKE) -C apps/ocean/contiguous_partitions
+	$(MAKE) -C apps/ocean/contiguous_partitions
 	$(MAKE) -C apps/ocean/non_contiguous_partitions
 	$(MAKE) -C apps/radiosity
 	$(MAKE) -C apps/raytrace
-	#$(MAKE) -C apps/volrend
+	$(MAKE) -C apps/volrend
 	$(MAKE) -C apps/water-nsquared
 	$(MAKE) -C apps/water-spatial
 	$(MAKE) -C kernels/cholesky
 	$(MAKE) -C kernels/fft
-	#$(MAKE) -C kernels/lu/contiguous_blocks
+	$(MAKE) -C kernels/lu/contiguous_blocks
 	$(MAKE) -C kernels/lu/non_contiguous_blocks
 	$(MAKE) -C kernels/radix
 
@@ -42,8 +42,10 @@ FMM:
 	cd apps/fmm && $(EMULATOR) ./FMM.$(EXT) < ./inputs/input.$(THREADS)\.16384 \
 	2>&1 | tee -i $(LOG_DIR)/splash3-$(EXT)-fmm.log
 OCEAN:
-	cd apps/ocean/non_contiguous_partitions && $(EMULATOR) ./OCEAN.$(EXT) -p$(THREADS) -n258 \
-	2>&1 | tee -i $(LOG_DIR)/splash3-$(EXT)-ocean.log
+	cd apps/ocean/contiguous_partitions && $(EMULATOR) ./OCEAN.$(EXT) -p$(THREADS) -n258 \
+	2>&1 | tee -i $(LOG_DIR)/splash3-$(EXT)-ocean-contiguous_partitions.log \
+	&& cd ../non_contiguous_partitions && $(EMULATOR) ./OCEAN.$(EXT) -p$(THREADS) -n258 \
+	2>&1 | tee -i $(LOG_DIR)/splash3-$(EXT)-ocean-non_contiguous_partitions.log
 RADIOSITY:
 	cd apps/radiosity && $(EMULATOR) ./RADIOSITY.$(EXT) -p $(THREADS) -ae 5000 -bf 0.1 -en 0.05 -room -batch \
 	2>&1 | tee -i $(LOG_DIR)/splash3-$(EXT)-radiosity.log
@@ -66,8 +68,10 @@ FFT:
 	cd kernels/fft && $(EMULATOR) ./FFT.$(EXT) -p$(THREADS) -m16 \
 	2>&1 | tee -i $(LOG_DIR)/splash3-$(EXT)-fft.log
 LU:
-	cd kernels/lu/non_contiguous_blocks && $(EMULATOR) ./LU.$(EXT) -p$(THREADS) -n512 \
-	2>&1 | tee -i $(LOG_DIR)/splash3-$(EXT)-lu.log
+	cd kernels/lu/contiguous_blocks && $(EMULATOR) ./LU.$(EXT) -p$(THREADS) -n512 \
+	2>&1 | tee -i $(LOG_DIR)/splash3-$(EXT)-lu-contiguous_blocks.log \
+	&& cd ../non_contiguous_blocks && $(EMULATOR) ./LU.$(EXT) -p$(THREADS) -n512 \
+	2>&1 | tee -i $(LOG_DIR)/splash3-$(EXT)-lu-non_contiguous_blocks.log
 RADIX:
 	cd kernels/radix && $(EMULATOR) ./RADIX.$(EXT) -p$(THREADS) -n51048576 \
 	2>&1 | tee -i $(LOG_DIR)/splash3-$(EXT)-radix.log
@@ -75,15 +79,15 @@ RADIX:
 clean:
 	$(MAKE) -C apps/barnes clean
 	$(MAKE) -C apps/fmm clean
-	#$(MAKE) -C apps/ocean/contiguous_partitions clean
+	$(MAKE) -C apps/ocean/contiguous_partitions clean
 	$(MAKE) -C apps/ocean/non_contiguous_partitions clean
 	$(MAKE) -C apps/radiosity clean
 	$(MAKE) -C apps/raytrace clean
-	#$(MAKE) -C apps/volrend clean
+	$(MAKE) -C apps/volrend clean
 	$(MAKE) -C apps/water-nsquared clean
 	$(MAKE) -C apps/water-spatial clean
 	$(MAKE) -C kernels/cholesky clean
 	$(MAKE) -C kernels/fft clean
-	#$(MAKE) -C kernels/lu/contiguous_blocks clean
+	$(MAKE) -C kernels/lu/contiguous_blocks clean
 	$(MAKE) -C kernels/lu/non_contiguous_blocks clean
 	$(MAKE) -C kernels/radix clean

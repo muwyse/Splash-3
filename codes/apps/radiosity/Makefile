@@ -40,5 +40,8 @@ glibps/glibps.a:
 clean:
 	$(MAKE) -C glibdumb clean
 	$(MAKE) -C glibps clean
-	$(RM) $(OBJS) RADIOSITY
+	rm -rf *.c *.h *.o $(TARGET)
+	rm -f $(TARGET).$(EXT)
+	
+#$(RM) $(OBJS) RADIOSITY
 
