@@ -41,6 +41,8 @@ clean:
 	$(MAKE) -C glibdumb clean
 	$(MAKE) -C glibps clean
 	rm -rf *.c *.h *.o $(TARGET)
+
+clean_binary:
 	rm -f $(TARGET).$(EXT)
 	
 #$(RM) $(OBJS) RADIOSITY

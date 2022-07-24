@@ -83,6 +83,9 @@ clean_all: clean_build.riscv clean_build.x86 clean_install
 clean_build.%:
 	$(MAKE) -C codes clean EXT=$*
 
+clean_binaries.%:
+	$(MAKE) -C codes clean_binaries EXT=$*
+
 clean_install.%:
 	rm -rf $(INSTALL_DIR)/*.$*
 

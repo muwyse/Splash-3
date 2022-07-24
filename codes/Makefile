@@ -7,7 +7,7 @@ all:
 	$(MAKE) -C apps/ocean/non_contiguous_partitions
 	$(MAKE) -C apps/radiosity
 	$(MAKE) -C apps/raytrace
-	$(MAKE) -C apps/volrend
+	#$(MAKE) -C apps/volrend
 	$(MAKE) -C apps/water-nsquared
 	$(MAKE) -C apps/water-spatial
 	$(MAKE) -C kernels/cholesky
@@ -83,7 +83,7 @@ clean:
 	$(MAKE) -C apps/ocean/non_contiguous_partitions clean
 	$(MAKE) -C apps/radiosity clean
 	$(MAKE) -C apps/raytrace clean
-	$(MAKE) -C apps/volrend clean
+	#$(MAKE) -C apps/volrend clean
 	$(MAKE) -C apps/water-nsquared clean
 	$(MAKE) -C apps/water-spatial clean
 	$(MAKE) -C kernels/cholesky clean
@@ -91,3 +91,19 @@ clean:
 	$(MAKE) -C kernels/lu/contiguous_blocks clean
 	$(MAKE) -C kernels/lu/non_contiguous_blocks clean
 	$(MAKE) -C kernels/radix clean
+
+clean_binaries:
+	$(MAKE) -C apps/barnes clean_binary
+	$(MAKE) -C apps/fmm clean_binary
+	$(MAKE) -C apps/ocean/contiguous_partitions clean_binary
+	$(MAKE) -C apps/ocean/non_contiguous_partitions clean_binary
+	$(MAKE) -C apps/radiosity clean_binary
+	$(MAKE) -C apps/raytrace clean_binary
+	#$(MAKE) -C apps/volrend clean_binary
+	$(MAKE) -C apps/water-nsquared clean_binary
+	$(MAKE) -C apps/water-spatial clean_binary
+	$(MAKE) -C kernels/cholesky clean_binary
+	$(MAKE) -C kernels/fft clean_binary
+	$(MAKE) -C kernels/lu/contiguous_blocks clean_binary
+	$(MAKE) -C kernels/lu/non_contiguous_blocks clean_binary
+	$(MAKE) -C kernels/radix clean_binary
