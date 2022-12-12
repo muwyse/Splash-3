@@ -34,7 +34,7 @@ EXT ?= riscv
 ifeq ($(EXT),x86)
 TOOLCHAIN_PREFIX=
 else
-TOOLCHAIN_PREFIX=riscv64-unknown-linux-gnu-
+TOOLCHAIN_PREFIX=$(RV64_TOOLCHAIN_PREFIX)
 endif
 
 .PHONY: help build install install_run install_inputs install_all clean_all clean_inputs clean_install

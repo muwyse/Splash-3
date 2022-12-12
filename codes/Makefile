@@ -16,7 +16,7 @@ all:
 	$(MAKE) -C kernels/lu/non_contiguous_blocks
 	$(MAKE) -C kernels/radix
 
-# BASEDIR from the .config file
+
 TOP := $(shell git rev-parse --show-toplevel)/../..
 INSTALL_DIR ?= $(TOP)/install
 LOG_DIR ?= $(TOP)/output-logs
